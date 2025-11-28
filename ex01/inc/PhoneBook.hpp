@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <regex>
 #include "Contact.hpp"
 
 class PhoneBook

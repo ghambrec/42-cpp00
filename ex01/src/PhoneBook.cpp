@@ -20,7 +20,35 @@ PhoneBook::~PhoneBook() {}
 
 static bool validate_input(const std::string& input, int key)
 {
-	
+	static const std::regex REGEX_NAME("^[A-Za-z-]+$");
+	static const std::regex REGEX_NUMBER("^\\+?[0-9][0-9 -]{3,}$");
+	static const std::regex REGEX_SECRET("^.+$");
+
+	if (key == FIRST_NAME || key == LAST_NAME || key == NICKNAME)
+	{
+		if (!std::regex_match(input, REGEX_NAME))
+		{
+			std::cout << "--- Invalid input! Try again - only characters allowed. ---\n";
+			return (false);
+		}
+	}
+	else if (key == PHONE_NUMBER)
+	{
+		if (!std::regex_match(input, REGEX_NUMBER))
+		{
+			std::cout << "--- Invalid input! Try again - only numbers, space and hyphers. ---\n";
+			return (false);
+		}
+	}
+	else if (key == SECRET)
+	{
+		if (!std::regex_match(input, REGEX_SECRET))
+		{
+			std::cout << "---Invalid input! Try again - minimum one character. ---\n";
+			return (false);
+		}
+	}
+	return (true);
 }
 
 static std::string get_user_input(int key)
