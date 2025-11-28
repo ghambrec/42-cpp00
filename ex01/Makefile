@@ -13,7 +13,8 @@ NAME = phonebook
 VPATH =	src
 SRCS =	main.cpp \
 		Contact.cpp \
-		PhoneBook.cpp
+		PhoneBook.cpp \
+		utils.cpp
 
 # obejct files
 OBJ_DIR = obj
@@ -39,4 +40,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+run: $(NAME)
+	./$(NAME)
+
+.PHONY: all clean fclean re run

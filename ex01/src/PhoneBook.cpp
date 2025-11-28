@@ -12,29 +12,45 @@
 
 #include "PhoneBook.hpp"
 
-// void set_contact(void);
-// void get_contacts(void);
+PhoneBook::PhoneBook()
+	: next_index_(0), count_(0)
+{}
 
-std::string	get_user_input(std::string key)
+PhoneBook::~PhoneBook() {}
+
+static bool validate_input(const std::string& input, int key)
 {
+	
+}
+
+static std::string get_user_input(int key)
+{
+	std::string contact_keys[CONTACT_INFOS_NUM] = {"first name", "last name", "nickname", "phone number", "darkest secret"};
 	std::string input;
+	bool 		input_correct;
 
 	input = "";
-	std::cout << "Please enter the " + key + "\n";
-	std::cout << "> ";
-	std::getline(); // hier weitermachen!!
+	input_correct = false;
+	while (!input_correct)
+	{
+		std::cout << "Please enter the " + contact_keys[key] + "\n";
+		std::cout << "> ";
+		std::getline(std::cin, input);
+		check_eof();
+		input_correct = validate_input(input, key);
+	}
 	return (input);
 }
 
-
 void PhoneBook::add_contact(void)
 {
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string	secret;
+	for (int i = 0; i < CONTACT_INFOS_NUM; i++)
+	{
+		contacts_[next_index_].set_info(get_user_input(i), i);
+	}
+	next_index_ = (next_index_ + 1) % MAX_CONTACTS;
+	if (count_ < MAX_CONTACTS)
+		count_++;
 
-	first_name = get_user_input("first name");
-		
+	std::cout << count_ << std::endl;
 }

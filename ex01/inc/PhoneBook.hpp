@@ -20,9 +20,11 @@ class PhoneBook
 {
 	private:
 		Contact	contacts_[8];
-		int		next_index;
-		int		count;
+		int		next_index_;
+		int		count_;
 
 	public:
+		PhoneBook();
+		~PhoneBook();
 		void add_contact(void);
 };

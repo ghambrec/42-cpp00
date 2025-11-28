@@ -17,13 +17,16 @@ int	main(void)
 	std::string input;
 	PhoneBook	pb;
 
+	// init
 	input = "";
+
 	std::cout << "Welcome to the PhoneBook\n";
 	while (input != "EXIT")
 	{
 		std::cout << "Please enter a command (ADD, SEARCH, EXIT)\n";
 		std::cout << "> ";
 		std::getline(std::cin, input);
+		check_eof();
 		
 		if (input == "ADD")
 		{
