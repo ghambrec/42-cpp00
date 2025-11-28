@@ -106,8 +106,7 @@ void PhoneBook::search(void)
 	std::cout << std::setfill (' ');
 	for (int i = 0; i < count_; i++)
 	{
-		std::cout << "|" << std::setw(COLUMN_WIDTH) << i << "|";
-
+		std::cout << "|" << std::setw(COLUMN_WIDTH) << i + 1 << "|";
 		for (int j = FIRST_NAME; j <= NICKNAME; j++)
 		{
 			std::cout << std::setw(COLUMN_WIDTH);
@@ -122,4 +121,9 @@ void PhoneBook::search(void)
 	}
 	std::cout << std::setfill ('-') << std::setw (COLUMN_WIDTH * 4 + 6) << "\n";
 	std::cout << std::setfill (' ');
+
+	// hier weitermachen
+	// Then, prompt the user again for the index of the entry to display. If the index
+	// is out of range or wrong, define a relevant behavior. Otherwise, display the
+	// contact information, one field per line.
 }
