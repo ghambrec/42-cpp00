@@ -17,9 +17,7 @@ int	main(void)
 	std::string input;
 	PhoneBook	pb;
 
-	// init
 	input = "";
-
 	std::cout << "Welcome to the PhoneBook\n";
 	while (input != "EXIT")
 	{
@@ -27,16 +25,10 @@ int	main(void)
 		std::cout << "> ";
 		std::getline(std::cin, input);
 		check_eof();
-		
 		if (input == "ADD")
-		{
-			// adden
 			pb.add_contact();
-			
-		}
 		else if (input == "SEARCH")
-		{
-			// search
-		}
+			pb.search();
 	}
+	return (EXIT_SUCCESS);
 }

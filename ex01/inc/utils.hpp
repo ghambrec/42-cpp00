@@ -2,6 +2,7 @@
 
 constexpr int CONTACT_INFOS_NUM = 5;
 constexpr int MAX_CONTACTS = 8;
+constexpr int COLUMN_WIDTH = 10;
 
 typedef enum e_contact_infos
 {

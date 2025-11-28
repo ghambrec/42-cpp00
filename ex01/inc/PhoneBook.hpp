@@ -16,6 +16,7 @@
 #include <string>
 #include <array>
 #include <regex>
+#include <iomanip>
 #include "Contact.hpp"
 
 class PhoneBook
@@ -29,4 +30,6 @@ class PhoneBook
 		PhoneBook();
 		~PhoneBook();
 		void add_contact(void);
+		void search(void);
+		void add_dummy_contacts(void);
 };

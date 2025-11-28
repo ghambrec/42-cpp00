@@ -12,6 +12,23 @@
 
 #include "PhoneBook.hpp"
 
+void PhoneBook::add_dummy_contacts(void) 
+{
+	std::string dummy_data[3][5] = {
+		{"Alice", "Smith", "Ally", "123456", "Loves pizza"},
+		{"genauzehnX", "Johnson", "Bobby", "654321", "Afraid of spiders"},
+		{"mehralszehnX", "Brown", "Chuck", "987654", "Secretly writes poems"}
+	};
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 5; j++) {
+			contacts_[next_index_].set_info(dummy_data[i][j], j);
+		}
+		next_index_ = (next_index_ + 1) % 8;
+		if (count_ < 8) count_++;
+	}
+}
+
 PhoneBook::PhoneBook()
 	: next_index_(0), count_(0)
 {}
@@ -21,7 +38,7 @@ PhoneBook::~PhoneBook() {}
 static bool validate_input(const std::string& input, int key)
 {
 	static const std::regex REGEX_NAME("^[A-Za-z-]+$");
-	static const std::regex REGEX_NUMBER("^\\+?[0-9][0-9 -]{3,}$");
+	static const std::regex REGEX_NUMBER("^\\+?[0-9][0-9 -]{2,}$");
 	static const std::regex REGEX_SECRET("^.+$");
 
 	if (key == FIRST_NAME || key == LAST_NAME || key == NICKNAME)
@@ -36,7 +53,7 @@ static bool validate_input(const std::string& input, int key)
 	{
 		if (!std::regex_match(input, REGEX_NUMBER))
 		{
-			std::cout << "--- Invalid input! Try again - only numbers, space and hyphers. ---\n";
+			std::cout << "--- Invalid input! Try again - only numbers, space and hyphers and minimum three numbers. ---\n";
 			return (false);
 		}
 	}
@@ -79,4 +96,45 @@ void PhoneBook::add_contact(void)
 	next_index_ = (next_index_ + 1) % MAX_CONTACTS;
 	if (count_ < MAX_CONTACTS)
 		count_++;
+}
+
+void PhoneBook::search(void)
+{
+	add_dummy_contacts();
+
+	std::cout << std::setfill ('-') << std::setw (COLUMN_WIDTH * 4 + 6) << "\n";
+	std::cout << std::setfill (' ');
+	for (int i = 0; i < count_; i++)
+	{
+		std::cout << "|";
+		std::cout << std::setw(COLUMN_WIDTH);
+		std::cout << i;
+		std::cout << "|";
+		std::cout << std::setw(COLUMN_WIDTH);
+		if (contacts_[i].get_info(FIRST_NAME).length() > COLUMN_WIDTH)
+		{
+			std::cout << contacts_[i].get_info(FIRST_NAME).substr(0, COLUMN_WIDTH - 1) + ".";
+		}
+		else
+			std::cout << contacts_[i].get_info(FIRST_NAME);
+		std::cout << "|";
+		std::cout << std::setw(COLUMN_WIDTH);
+		if (contacts_[i].get_info(LAST_NAME).length() > COLUMN_WIDTH)
+		{
+			std::cout << contacts_[i].get_info(LAST_NAME).substr(0, COLUMN_WIDTH - 1) + ".";
+		}
+		else
+			std::cout << contacts_[i].get_info(LAST_NAME);
+		std::cout << "|";
+		std::cout << std::setw(COLUMN_WIDTH);
+		if (contacts_[i].get_info(NICKNAME).length() > COLUMN_WIDTH)
+		{
+			std::cout << contacts_[i].get_info(NICKNAME).substr(0, COLUMN_WIDTH - 1) + ".";
+		}
+		else
+			std::cout << contacts_[i].get_info(NICKNAME);
+		std::cout << "|\n";
+	}
+	std::cout << std::setfill ('-') << std::setw (COLUMN_WIDTH * 4 + 6) << "\n";
+	std::cout << std::setfill (' ');
 }
