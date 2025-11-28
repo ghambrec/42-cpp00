@@ -106,34 +106,19 @@ void PhoneBook::search(void)
 	std::cout << std::setfill (' ');
 	for (int i = 0; i < count_; i++)
 	{
-		std::cout << "|";
-		std::cout << std::setw(COLUMN_WIDTH);
-		std::cout << i;
-		std::cout << "|";
-		std::cout << std::setw(COLUMN_WIDTH);
-		if (contacts_[i].get_info(FIRST_NAME).length() > COLUMN_WIDTH)
+		std::cout << "|" << std::setw(COLUMN_WIDTH) << i << "|";
+
+		for (int j = FIRST_NAME; j <= NICKNAME; j++)
 		{
-			std::cout << contacts_[i].get_info(FIRST_NAME).substr(0, COLUMN_WIDTH - 1) + ".";
+			std::cout << std::setw(COLUMN_WIDTH);
+			std::string val = contacts_[i].get_info(j);
+			if (val.length() > COLUMN_WIDTH)
+				std::cout << val.substr(0, COLUMN_WIDTH - 1) + ".";
+			else
+				std::cout << val;
+			std::cout << "|";
 		}
-		else
-			std::cout << contacts_[i].get_info(FIRST_NAME);
-		std::cout << "|";
-		std::cout << std::setw(COLUMN_WIDTH);
-		if (contacts_[i].get_info(LAST_NAME).length() > COLUMN_WIDTH)
-		{
-			std::cout << contacts_[i].get_info(LAST_NAME).substr(0, COLUMN_WIDTH - 1) + ".";
-		}
-		else
-			std::cout << contacts_[i].get_info(LAST_NAME);
-		std::cout << "|";
-		std::cout << std::setw(COLUMN_WIDTH);
-		if (contacts_[i].get_info(NICKNAME).length() > COLUMN_WIDTH)
-		{
-			std::cout << contacts_[i].get_info(NICKNAME).substr(0, COLUMN_WIDTH - 1) + ".";
-		}
-		else
-			std::cout << contacts_[i].get_info(NICKNAME);
-		std::cout << "|\n";
+		std::cout << "\n";
 	}
 	std::cout << std::setfill ('-') << std::setw (COLUMN_WIDTH * 4 + 6) << "\n";
 	std::cout << std::setfill (' ');
