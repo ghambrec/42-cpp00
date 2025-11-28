@@ -46,11 +46,9 @@ void PhoneBook::add_contact(void)
 {
 	for (int i = 0; i < CONTACT_INFOS_NUM; i++)
 	{
-		contacts_[next_index_].set_info(get_user_input(i), i);
+		contacts_.at(next_index_).set_info(get_user_input(i), i);
 	}
 	next_index_ = (next_index_ + 1) % MAX_CONTACTS;
 	if (count_ < MAX_CONTACTS)
 		count_++;
-
-	std::cout << count_ << std::endl;
 }

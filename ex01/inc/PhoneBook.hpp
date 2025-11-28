@@ -14,12 +14,13 @@
 
 #include <iostream>
 #include <string>
+#include <array>
 #include "Contact.hpp"
 
 class PhoneBook
 {
 	private:
-		Contact	contacts_[8];
+		std::array<Contact, 8> contacts_;
 		int		next_index_;
 		int		count_;
 
