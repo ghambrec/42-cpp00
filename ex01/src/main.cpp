@@ -19,6 +19,7 @@ int	main(void)
 
 	input = "";
 	std::cout << "Welcome to the PhoneBook\n";
+	// pb.add_dummy_contacts();
 	while (input != "EXIT")
 	{
 		std::cout << "Please enter a command (ADD, SEARCH, EXIT)\n";

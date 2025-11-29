@@ -14,6 +14,8 @@ VPATH =	src
 SRCS =	main.cpp \
 		Contact.cpp \
 		PhoneBook.cpp \
+		PhoneBook_add.cpp \
+		PhoneBook_search.cpp \
 		utils.cpp
 
 # obejct files
