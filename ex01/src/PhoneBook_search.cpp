@@ -24,6 +24,11 @@ void PhoneBook::search(void)
 	int			index = -1;
 	std::string	input;
 
+	if (count_ == 0)
+	{
+        std::cout << "--- No contacts added, please add a contact before you search. ---\n";
+		return ;
+	}
     // ### TABLE ###
 	std::cout << std::setfill ('-') << std::setw (COLUMN_WIDTH * 4 + 6) << "\n";
 	std::cout << std::setfill (' ');
