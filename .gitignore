@@ -4,3 +4,6 @@ a.out
 obj/
 megaphone
 phonebook
+ex02/Account.hpp
+ex02/tests.cpp
+ex02/*.log
