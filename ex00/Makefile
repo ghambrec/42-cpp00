@@ -1,4 +1,4 @@
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -O2
 
 NAME = megaphone
