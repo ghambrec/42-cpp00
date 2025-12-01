@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook_add.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:01:08 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/11/27 15:32:37 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/01 13:49:14 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void PhoneBook::add_dummy_contacts(void)
 {
 	int count = 3;
 	int fields = 5;
-	std::string dummy_data[count][fields] = {
+	std::string dummy_data[3][5] = {
 		{"Peter", "Party", "pp", "123456", "i love carneval"},
 		{"exact10chr", "distel", "ed", "456789", "i love beer"},
 		{"mrethan10chars", "lederhosn", "ml", "123789", "i love the wiesn"}
