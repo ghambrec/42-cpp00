@@ -6,10 +6,11 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 20:34:59 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/11/30 21:24:47 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:07:50 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Account.hpp"
 
 Account::Account(void)
@@ -24,12 +25,22 @@ Account::~Account(void)
 
 Account::Account(int initial_deposit)
 {
-    
+    _accountIndex = _nbAccounts;
+    _amount = initial_deposit;
+
+    _nbAccounts += 1;
+    _totalAmount += _amount;
+
+    // output
+    _displayTimestamp();
+    std::cout << "index:" << _accountIndex;
+    std::cout << ";amount:" << _amount;
+    std::cout << ";created\n";
 }
 
 void	Account::_displayTimestamp(void)
 {
-    // hier weiter
+    std::cout << "[yyyyMMdd_hhmmss] ";
 }
 
 int	Account::getNbAccounts(void)
@@ -54,7 +65,12 @@ int Account::getNbWithdrawals(void)
 
 void Account::displayAccountsInfos(void)
 {
-    
+    _displayTimestamp();
+    std::cout << "accounts:" << _nbAccounts;
+    std::cout << ";total:" << _totalAmount;
+    std::cout << ";deposits:" << _totalNbDeposits;
+    std::cout << ";withdrawals:" << _totalNbWithdrawals;
+    std::cout << "\n";
 }
 
 void Account::makeDeposit( int deposit )
@@ -74,5 +90,10 @@ int Account::checkAmount( void ) const
 
 void Account::displayStatus( void ) const
 {
-    
+    _displayTimestamp();
+    std::cout << "index:" << _accountIndex;
+    std::cout << ";amount:" << _amount;
+    std::cout << ";deposits:" << _nbDeposits;
+    std::cout << ";withdrawals:" << _nbWithdrawals;
+    std::cout << "\n";
 }
