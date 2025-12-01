@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 20:34:59 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/01 14:28:26 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/01 15:26:00 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #include <ctime>
 #include <string>
 #include "Account.hpp"
+
+// definition static member variables
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 Account::Account(void)
 {
@@ -42,7 +48,12 @@ Account::Account(int initial_deposit)
 
 void	Account::_displayTimestamp(void)
 {
-    std::cout << "[yyyyMMdd_hhmmss] ";
+    time_t timestamp = time(NULL);
+    struct tm datetime = *localtime(&timestamp);
+    
+    char out[20];
+    strftime(out, 20, "[%Y%m%d_%H%M%S] ", &datetime);
+    std::cout << out;
 }
 
 int	Account::getNbAccounts(void)
@@ -57,7 +68,7 @@ int Account::getTotalAmount(void)
 
 int Account::getNbDeposits(void)
 {
-    return (_totalAmount);
+    return (_totalNbDeposits);
 }
 
 int Account::getNbWithdrawals(void)
@@ -77,17 +88,18 @@ void Account::displayAccountsInfos(void)
 
 void Account::makeDeposit( int deposit )
 {
-
+    (void)deposit;
 }
 
 bool Account::makeWithdrawal( int withdrawal )
 {
-
+    (void)withdrawal;
+    return true; //test
 }
 
 int Account::checkAmount( void ) const
 {
-
+    return 0; //test
 }
 
 void Account::displayStatus( void ) const
