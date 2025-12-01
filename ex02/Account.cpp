@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 20:34:59 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/01 16:23:19 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/01 19:28:56 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-Account::Account(void)
-{
-
-}
+Account::Account(void) {}
 
 Account::~Account(void)
 {
-    
+	_displayTimestamp();
+	std::cout	<< "index:" << _accountIndex
+				<< ";amount:" << checkAmount()
+				<< ";closed\n";
 }
 
 Account::Account(int initial_deposit)
-    :   _accountIndex(_nbAccounts),
+    :   _accountIndex(getNbAccounts()),
         _amount(initial_deposit),
         _nbDeposits(0),
         _nbWithdrawals(0)
@@ -80,10 +80,10 @@ int Account::getNbWithdrawals(void)
 void Account::displayAccountsInfos(void)
 {
     _displayTimestamp();
-    std::cout 	<< "accounts:" << _nbAccounts
-    			<< ";total:" << _totalAmount
-    			<< ";deposits:" << _totalNbDeposits
-    			<< ";withdrawals:" << _totalNbWithdrawals
+    std::cout 	<< "accounts:" << getNbAccounts()
+    			<< ";total:" << getTotalAmount()
+    			<< ";deposits:" << getNbDeposits()
+    			<< ";withdrawals:" << getNbWithdrawals()
     			<< "\n";
 }
 
