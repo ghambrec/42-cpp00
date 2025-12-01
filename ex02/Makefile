@@ -6,7 +6,7 @@
 #    By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/01 14:19:20 by ghambrec          #+#    #+#              #
-#    Updated: 2025/12/01 14:19:22 by ghambrec         ###   ########.fr        #
+#    Updated: 2025/12/01 15:39:17 by ghambrec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,6 @@ fclean: clean
 re: fclean all
 
 run: $(NAME)
-	./$(NAME)
+	./$(NAME) > $(NAME).log
 
 .PHONY: all clean fclean re run
