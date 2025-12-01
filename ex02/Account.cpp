@@ -6,11 +6,13 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 20:34:59 by ghambrec          #+#    #+#             */
-/*   Updated: 2025/12/01 10:07:50 by ghambrec         ###   ########.fr       */
+/*   Updated: 2025/12/01 14:27:34 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <ctime>
+#include <string>
 #include "Account.hpp"
 
 Account::Account(void)
